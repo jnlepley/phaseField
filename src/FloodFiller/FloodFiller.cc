@@ -18,6 +18,12 @@ void FloodFiller<dim, degree>::calcGrainSets(dealii::FESystem<dim> & fe, dealii:
     grain_sets.push_back(grain_set);
     grain_sets.back().setOrderParameterIndex(order_parameter_index);
 
+    //////////////////////////
+    // I feel like the below while loop is making many unnecisary calculations
+    // Idealy, I'd call recusiveFloodFill once per grain, and not once per 'di'
+    // cell_iterator
+    //////////////////////////
+
     // The flood fill loop
     di = dof_handler.begin();
     while (di != dof_handler.end())
@@ -78,6 +84,11 @@ void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* so
 
                     dealii::FEValues<dim> fe_values (*fe, quadrature, dealii::update_values);
                     std::vector<double> var_values(num_quad_points);
+
+                    //////////////////////////
+                    // Not quite sure what q_point_list is achieving, since I can't see it being
+                    // used elsewhere in the code
+                    //////////////////////////
                     std::vector<dealii::Point<dim> > q_point_list(num_quad_points);
 
                     // Get the average value for the element
@@ -100,6 +111,19 @@ void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* so
                             vertex_list.push_back(di->vertex(v));
                         }
                         grain_sets.back().addVertexList(vertex_list);
+
+                        ////////////////////////
+                        // The below for loop is not the best implimentation
+                        // n<2*dim is only allowing for square-shaped cells
+                        // n_faces() should be used rather than 2*dim
+                        // The call on neighboring cells should only be on the
+                        // neighboring MOTHER cells
+                        // I would change the below code to
+                        /*
+                        2*dim --> di->n_faces()
+                        di->neighbor(n) --> di->parent()->neighbor(n)
+                        */
+                        ////////////////////////
 
                         // Call recursiveFloodFill on the element's neighbors
                         for (unsigned int n=0; n<2*dim; n++){

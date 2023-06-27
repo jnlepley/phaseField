@@ -91,6 +91,15 @@ void MatrixFreePDE<dim,degree>::applyInitialConditions(){
 
         // Now locate all of the grains and create simplified representations of them
         QGaussLobatto<dim> quadrature2 (degree+1);
+
+        //////////////////////////
+        // *FESet.at(scalar_field_index) is initialized here, and passed in again (duplicated) on
+        // line 110 (103). (its just a pointer so it shouldn't mater)
+        // I know FESet is a vector of pointer-to-FESystem objects,
+        // but I'm not sure how that vector is structured. What is .at(scalar_field_index) "pointing"
+        // to?
+        //////////////////////////
+
         FloodFiller<dim, degree> flood_filler(*FESet.at(scalar_field_index), quadrature2);
 
         pcout << "Locating the grains...\n";
