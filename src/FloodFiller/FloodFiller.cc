@@ -8,34 +8,46 @@ void FloodFiller<dim, degree>::calcGrainSets(dealii::FESystem<dim> & fe, dealii:
 
     // Loop through the whole mesh and set the user flags to false (so everything is considered unmarked)
     typename dealii::DoFHandler<dim>::cell_iterator di = dof_handler.begin();
+    // Iterate through every 'di' cell in the mesh
     while (di != dof_handler.end())
     {
+        // Clear each cell of the 'marked' marking
         di->clear_user_flag();
         ++di;
     }
 
+    // Make a new datatype called 'grain_set', a way of representing a single grain
     GrainSet<dim> grain_set;
+
+    // Add that set to a list of grains, for use in initialConditions.cc
     grain_sets.push_back(grain_set);
+
+    // Set that grain's order parameter index to 0 (in inital conditions.cc)
+    // Not sure why it's zero in initialConditions.cc
     grain_sets.back().setOrderParameterIndex(order_parameter_index);
 
     //////////////////////////
     // I feel like the below while loop is making many unnecisary calculations
     // Idealy, I'd call recusiveFloodFill once per grain, and not once per 'di'
-    // cell_iterator
+    // cell_iterator. If there are 8 grains in the scene and ~10,000 di's per grain, 
+    // well, the computation will be unnecisarily slow
     //////////////////////////
-
     // The flood fill loop
     di = dof_handler.begin();
     while (di != dof_handler.end())
     {
+        // If the cell doesn't have children,
         if (!di->has_children()){
+
             bool grain_assigned = false;
+            // Flood fill in that grain
             recursiveFloodFill<typename dealii::DoFHandler<dim>::cell_iterator>(di, dof_handler.end(), solution_field, threshold_lower, threshold_upper,  grain_index, grain_sets, grain_assigned);
 
-
+            // Flood filler will indicate if the grain is assigned or not
             if (grain_assigned){
                 // Get the grain set initialized for the next grain to be found
                 grain_index++;
+                // Add it to the list of grains (grain_sets)
                 GrainSet<dim> new_grain_set;
                 new_grain_set.setOrderParameterIndex(order_parameter_index);
                 grain_sets.push_back(new_grain_set);
@@ -45,8 +57,10 @@ void FloodFiller<dim, degree>::calcGrainSets(dealii::FESystem<dim> & fe, dealii:
         ++di;
     }
 
+    // I'm not too sure how a grain will be initialized but empty, but:
     // If the last grain was initialized but empty, delete it
     if (grain_sets.back().getVertexList().size() == 0){
+        // remove from grain sets
         grain_sets.pop_back();
     }
 
@@ -65,44 +79,72 @@ template <int dim, int degree>
 template <typename T>
 void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* solution_field, double threshold_lower, double threshold_upper, unsigned int & grain_index, std::vector<GrainSet<dim>> & grain_sets, bool & grain_assigned){
 
+    // If di isn't the last di
     if (di != di_end){
 
         // Check if the cell has been marked yet
         bool cellMarked = di->user_flag_set();
 
+        // If the cell isn't marked...
         if (!cellMarked){
 
+            // If the cell has children (not active), recursively mark its children
             if (di->has_children()){
                 // Call recursiveFloodFill on the element's children
                 for (unsigned int n=0; n<di->n_children(); n++){
                     recursiveFloodFill<T>(di->child(n), di_end, solution_field, threshold_lower, threshold_upper,  grain_index, grain_sets, grain_assigned);
                 }
             }
+            // If the cell doesn't have children
             else{
+                // And if the cell is owned by this processor, 
                 if (di->is_locally_owned()){
+                    // set the cell as marked
                     di->set_user_flag();
 
+                    // Get the finite element values, on the docs, it recomends to construct
+                    // fe_values outside of any loop, since it is a large object 
+                    // Maybe have it as a private member variable of the FloodFiller class and 
+                    // pass in the changing di variable
                     dealii::FEValues<dim> fe_values (*fe, quadrature, dealii::update_values);
+
+                    // A vector (I assume) that contains the values (not sure which values)
+                    // of every quadrature point. Unsure how they are structured.
                     std::vector<double> var_values(num_quad_points);
 
                     //////////////////////////
                     // Not quite sure what q_point_list is achieving, since I can't see it being
                     // used elsewhere in the code
+                    // My guess is that it is a vector of quadrature points.
+                    // The double nested for loop below doesn't rely on q_point_list
+                    // but it does rely on q_point numbers
                     //////////////////////////
                     std::vector<dealii::Point<dim> > q_point_list(num_quad_points);
 
                     // Get the average value for the element
+                    // I don't know exacly what reinit does, but I know it is necisary for 
+                    // geting the values at out 'di'
                     fe_values.reinit(di);
+                    // Return the values of a finite element function restricted to the current cell
+                    // that was last selected by the reinit function
+                    // Input: solution_field (fe_function in the docs)
+                    // Output: var_values, The values of the function specified by 
+                    // fe_function at the quadrature points of the current cell
+                    // I am very unsure on what solution_field represents
                     fe_values.get_function_values(*solution_field, var_values);
 
-
+                    // A nested for loop summing the value (unsure what value)
+                    // at each cell (every quadrature point and dof per cell)
                     double ele_val = 0.0;
                     for (unsigned int q_point=0; q_point<num_quad_points; ++q_point){
                         for (unsigned int i=0; i<dofs_per_cell; ++i){
+                            // fe_values.shape_value(dof, q_point_number) returns the value of a shape 
+                            // function at a quadrature point on the cell, the last time the reinit function was called.
                             ele_val += fe_values.shape_value (i, q_point)*var_values[q_point]*quadrature.weight(q_point);
                         }
                     }
 
+                    // 
                     if (ele_val > threshold_lower && ele_val < threshold_upper){
                         grain_assigned = true;
 
@@ -127,7 +169,7 @@ void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* so
 
                         // Call recursiveFloodFill on the element's neighbors
                         for (unsigned int n=0; n<2*dim; n++){
-                            recursiveFloodFill<T>(di->neighbor(n), di_end, solution_field, threshold_lower, threshold_upper,  grain_index, grain_sets, grain_assigned);
+                            recursiveFloodFill<T>(di->parent()->neighbor(n), di_end, solution_field, threshold_lower, threshold_upper,  grain_index, grain_sets, grain_assigned);
                         }
                     }
                 }

@@ -124,6 +124,7 @@ protected:
 
     /**
     * The deal.II finite element object, set in the constructor.
+    * FESystem with just <dim> implies that dim = spacedim
     */
     dealii::FESystem<dim> * fe;
 };
