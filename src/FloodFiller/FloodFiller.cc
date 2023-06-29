@@ -113,11 +113,12 @@ void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* so
                     std::vector<double> var_values(num_quad_points);
 
                     //////////////////////////
-                    // Not quite sure what q_point_list is achieving, since I can't see it being
+                    // Not quite sure what q_point_list is achieving, since I don't see it being
                     // used elsewhere in the code
                     // My guess is that it is a vector of quadrature points.
                     // The double nested for loop below doesn't rely on q_point_list
                     // but it does rely on q_point numbers
+                    // q_point_list is not a necisary variable in this function
                     //////////////////////////
                     //std::vector<dealii::Point<dim> > q_point_list(num_quad_points);
 
@@ -165,11 +166,12 @@ void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* so
                         2*dim --> di->n_faces()
                         di->neighbor(n) --> di->parent()->neighbor(n)
                         */
+                       // After doing some tests
                         ////////////////////////
 
                         // Call recursiveFloodFill on the element's neighbors
                         for (unsigned int n=0; n<2*dim; n++){
-                            recursiveFloodFill<T>(di->neighbor(n), di_end, solution_field, threshold_lower, threshold_upper,  grain_index, grain_sets, grain_assigned);
+                            recursiveFloodFill<T>(di->parent()->neighbor(n), di_end, solution_field, threshold_lower, threshold_upper,  grain_index, grain_sets, grain_assigned);
                         }
                     }
                 }

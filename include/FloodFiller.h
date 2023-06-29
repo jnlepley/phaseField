@@ -131,6 +131,9 @@ protected:
     /**
     * The deal.II finite element values object,
     * Used for calculating the values at 'di' cell_iterator objects
+    * Rather than being initialized every time recursiveFloodFill is called, this is a 
+    * member variable that doesn't change between every call of recursiveFloodFill
+    * (cutting unnecisary computations)
     */
     dealii::FEValues<dim> fe_values;
 };
