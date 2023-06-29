@@ -119,7 +119,7 @@ void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* so
                     // The double nested for loop below doesn't rely on q_point_list
                     // but it does rely on q_point numbers
                     //////////////////////////
-                    std::vector<dealii::Point<dim> > q_point_list(num_quad_points);
+                    //std::vector<dealii::Point<dim> > q_point_list(num_quad_points);
 
                     // Get the average value for the element
                     // I don't know exacly what reinit does, but I know it is necisary for 
@@ -169,7 +169,7 @@ void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* so
 
                         // Call recursiveFloodFill on the element's neighbors
                         for (unsigned int n=0; n<2*dim; n++){
-                            recursiveFloodFill<T>(di->parent()->neighbor(n), di_end, solution_field, threshold_lower, threshold_upper,  grain_index, grain_sets, grain_assigned);
+                            recursiveFloodFill<T>(di->neighbor(n), di_end, solution_field, threshold_lower, threshold_upper,  grain_index, grain_sets, grain_assigned);
                         }
                     }
                 }
