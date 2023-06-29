@@ -81,7 +81,7 @@ public:
     /**
     * Constructor.
     */
-    FloodFiller(dealii::FESystem<dim> & _fe, dealii::QGaussLobatto<dim> _quadrature): quadrature(_quadrature), num_quad_points(_quadrature.size()), dofs_per_cell(_fe.dofs_per_cell){
+    FloodFiller(dealii::FESystem<dim> & _fe, dealii::QGaussLobatto<dim> _quadrature): quadrature(_quadrature), num_quad_points(_quadrature.size()), dofs_per_cell(_fe.dofs_per_cell), fe_values(_fe, _quadrature, dealii::update_values){
         fe = & _fe;
     };
 
@@ -127,6 +127,12 @@ protected:
     * FESystem with just <dim> implies that dim = spacedim
     */
     dealii::FESystem<dim> * fe;
+
+    /**
+    * The deal.II finite element values object,
+    * Used for calculating the values at 'di' cell_iterator objects
+    */
+    dealii::FEValues<dim> fe_values;
 };
 
 #endif

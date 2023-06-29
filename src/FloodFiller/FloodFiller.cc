@@ -106,7 +106,7 @@ void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* so
                     // fe_values outside of any loop, since it is a large object 
                     // Maybe have it as a private member variable of the FloodFiller class and 
                     // pass in the changing di variable
-                    dealii::FEValues<dim> fe_values (*fe, quadrature, dealii::update_values);
+                    //dealii::FEValues<dim> fe_values (*fe, quadrature, dealii::update_values);
 
                     // A vector (I assume) that contains the values (not sure which values)
                     // of every quadrature point. Unsure how they are structured.
