@@ -104,11 +104,11 @@ void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* so
 
                     // Get the finite element values, on the docs, it recomends to construct
                     // fe_values outside of any loop, since it is a large object 
-                    // Maybe have it as a private member variable of the FloodFiller class and 
-                    // pass in the changing di variable
+                    // Made it a private member variable of the FloodFiller class and 
+                    // only use reinit(di)
                     //dealii::FEValues<dim> fe_values (*fe, quadrature, dealii::update_values);
 
-                    // A vector (I assume) that contains the values (not sure which values)
+                    // A vector that contains the values (of feature IDs)
                     // of every quadrature point. Unsure how they are structured.
                     std::vector<double> var_values(num_quad_points);
 
@@ -128,10 +128,9 @@ void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* so
                     fe_values.reinit(di);
                     // Return the values of a finite element function restricted to the current cell
                     // that was last selected by the reinit function
-                    // Input: solution_field (fe_function in the docs)
-                    // Output: var_values, The values of the function specified by 
-                    // fe_function at the quadrature points of the current cell
-                    // I am very unsure on what solution_field represents
+                    // solution_field is A vector of values that describes (globally) the finite element function 
+                    // that this function should evaluate at the quadrature points of the current cell. 
+                    // var_values[q] will contain the value of the field described by fe_function at the qth quadrature point.
                     fe_values.get_function_values(*solution_field, var_values);
 
                     // A nested for loop summing the value (unsure what value)
@@ -159,6 +158,7 @@ void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* so
                         // The below for loop is not the best implimentation
                         // n<2*dim is only allowing for square-shaped cells
                         // n_faces() should be used rather than 2*dim
+                        ////////////////////////
                         // The call on neighboring cells should only be on the
                         // neighboring MOTHER cells
                         // I would change the below code to
@@ -166,12 +166,12 @@ void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* so
                         2*dim --> di->n_faces()
                         di->neighbor(n) --> di->parent()->neighbor(n)
                         */
-                       // After doing some tests
+                       // After doing some tests, I can say the above change didn't result in anything
                         ////////////////////////
 
                         // Call recursiveFloodFill on the element's neighbors
                         for (unsigned int n=0; n<2*dim; n++){
-                            recursiveFloodFill<T>(di->parent()->neighbor(n), di_end, solution_field, threshold_lower, threshold_upper,  grain_index, grain_sets, grain_assigned);
+                            recursiveFloodFill<T>(di->neighbor(n), di_end, solution_field, threshold_lower, threshold_upper,  grain_index, grain_sets, grain_assigned);
                         }
                     }
                 }
