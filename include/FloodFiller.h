@@ -92,10 +92,17 @@ public:
 protected:
 
     /**
-    * The actual recursive flood fill method.
+    * The actual queue flood fill method.
+    * https://www.algorithm-archive.org/contents/flood_fill/flood_fill.html
     */
     template <typename T>
-    void recursiveFloodFill(T di, T di_end, vectorType* solution_field, double threshold_lower, double threshold_upper, unsigned int & grain_index, std::vector<GrainSet<dim>> & grain_sets, bool & grain_assigned);
+    void queueFloodFill(T di, T di_end, vectorType* solution_field, double threshold_lower, double threshold_upper, std::vector<GrainSet<dim>> & grain_sets, bool & grain_assigned);
+
+    /**
+    * Function that checks wether a di 'cell' should be considered to be added to the flood fill queue
+    */
+    template <typename T>
+    bool checkCell(T di, T di_end, vectorType* solution_field, double threshold_lower, double threshold_upper);
 
     /**
     * The method to merge the grain sets from all the processors.
