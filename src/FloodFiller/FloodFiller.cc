@@ -1,6 +1,8 @@
 #include "../../include/FloodFiller.h"
 #include <numeric>
 
+#include <iostream>
+
 template <int dim, int degree>
 void FloodFiller<dim, degree>::calcGrainSets(dealii::FESystem<dim> & fe, dealii::DoFHandler<dim> &dof_handler, vectorType* solution_field, double threshold_lower, double threshold_upper, unsigned int order_parameter_index, std::vector<GrainSet<dim>> & grain_sets){
 
@@ -29,11 +31,12 @@ void FloodFiller<dim, degree>::calcGrainSets(dealii::FESystem<dim> & fe, dealii:
     //////////////////////////
     // I feel like the below while loop is making many unnecisary calculations
     // Idealy, I'd call recusiveFloodFill once per grain, and not once per 'di'
-    // cell_iterator. If there are 8 grains in the scene and ~10,000 di's per grain, 
+    // active_cell_iterator. If there are 8 grains in the scene and ~10,000 di's per grain, 
     // well, the computation will be unnecisarily slow
     //////////////////////////
     // The flood fill loop
     di = dof_handler.begin();
+    unsigned int numberOfCellsIterared = 0;
     while (di != dof_handler.end())
     {
         // If the cell doesn't have children,
@@ -52,10 +55,15 @@ void FloodFiller<dim, degree>::calcGrainSets(dealii::FESystem<dim> & fe, dealii:
                 new_grain_set.setOrderParameterIndex(order_parameter_index);
                 grain_sets.push_back(new_grain_set);
             }
+        } else if (di->has_children()) {
+            // std::cout << di->n_children() << " children detected.\n";
         }
 
         ++di;
+        ++numberOfCellsIterared;
     }
+
+    std::cout << "Total cells: " << numberOfCellsIterared << "\n";
 
     // I'm not too sure how a grain will be initialized but empty, but:
     // If the last grain was initialized but empty, delete it
@@ -91,6 +99,7 @@ void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* so
             // If the cell has children (not active), recursively mark its children
             if (di->has_children()){
                 // Call recursiveFloodFill on the element's children
+                std::cout << "FLOOD FILL: child detected\n";
                 for (unsigned int n=0; n<di->n_children(); n++){
                     recursiveFloodFill<T>(di->child(n), di_end, solution_field, threshold_lower, threshold_upper,  grain_index, grain_sets, grain_assigned);
                 }
