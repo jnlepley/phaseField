@@ -1,5 +1,5 @@
 #include "../../include/FloodFiller.h"
-#include "../../include/matrixFreePDE.h"
+//#include "../../include/matrixFreePDE.h"
 
 #include <numeric>
 #include <iostream>
@@ -11,11 +11,6 @@ template <int dim, int degree>
 void FloodFiller<dim, degree>::calcGrainSets(dealii::FESystem<dim> & fe, dealii::DoFHandler<dim> &dof_handler, vectorType* solution_field, double threshold_lower, double threshold_upper, unsigned int order_parameter_index, std::vector<GrainSet<dim>> & grain_sets){
 
     // unsigned int grain_index = 0;
-
-    // I would use this, although userInputs is a protected member variable (probably for good reason)
-    //unsigned int level = MatrixFreePDE::userInputs.refine_factor;
-
-    unsigned int level = 7;
 
     // Loop through the whole mesh and set the user flags to false (so everything is considered unmarked)
     typename dealii::DoFHandler<dim>::cell_iterator di = dof_handler.begin(level);
@@ -73,7 +68,7 @@ void FloodFiller<dim, degree>::calcGrainSets(dealii::FESystem<dim> & fe, dealii:
         ++numberOfCellsIterared;
     }
 
-    // std::cout << "  Total cells: " << numberOfCellsIterared << "\n";
+    // pcout << "  Total cells: " << numberOfCellsIterared << "\n";
 
     // Generate global list of the grains, merging grains split between multiple processors
     if (dealii::Utilities::MPI::n_mpi_processes(MPI_COMM_WORLD) > 1) {
@@ -96,7 +91,7 @@ void FloodFiller<dim, degree>::queueFloodFill(T di, T di_end, vectorType* soluti
     }
 
     // Print the cell's begining location to console
-    std::cout << "  Grain found at: " << di->vertex(0) << "\n";
+    pcout << "  Grain found at: " << di->vertex(0) << "\n";
 
     // Make a queue used for the flood fill
     std::queue<T> floodQueue;
@@ -147,7 +142,7 @@ void FloodFiller<dim, degree>::queueFloodFill(T di, T di_end, vectorType* soluti
 
     }
 
-    std::cout << "  Grain filled: found " << numberOfCellsInFill << " cells in grain.\n";
+    pcout << "  Grain filled: found " << numberOfCellsInFill << " cells in grain.\n";
 
     grain_assigned = true;
 

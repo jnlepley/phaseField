@@ -10,6 +10,7 @@
 #include <deal.II/dofs/dof_handler.h>
 #include <deal.II/lac/parallel_vector.h>
 #include <deal.II/matrix_free/fe_evaluation.h>
+#include <deal.II/base/conditional_ostream.h>
 
 #ifndef vectorType
 typedef dealii::parallel::distributed::Vector<double> vectorType;
@@ -81,7 +82,8 @@ public:
     /**
     * Constructor.
     */
-    FloodFiller(dealii::FESystem<dim> & _fe, dealii::QGaussLobatto<dim> _quadrature, bool _GrainorOPs): quadrature(_quadrature), num_quad_points(_quadrature.size()), dofs_per_cell(_fe.dofs_per_cell), fe_values(_fe, _quadrature, dealii::update_values), findGrainsOrOPs(_GrainorOPs){
+    FloodFiller(dealii::FESystem<dim> & _fe, dealii::QGaussLobatto<dim> _quadrature, bool _GrainorOPs, dealii::ConditionalOStream _pcout, int _level)
+                : quadrature(_quadrature), num_quad_points(_quadrature.size()), dofs_per_cell(_fe.dofs_per_cell), fe_values(_fe, _quadrature, dealii::update_values), findGrainsOrOPs(_GrainorOPs), pcout(_pcout), level(_level){
         fe = & _fe;
     };
 
@@ -114,6 +116,10 @@ protected:
     * True for grain IDs and false for Order Parameter searches. 
     */
     bool findGrainsOrOPs;
+
+    dealii::ConditionalOStream pcout;
+
+    int level;
 
     /**
     * The method to merge the grain sets from all the processors.
