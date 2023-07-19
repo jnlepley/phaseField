@@ -81,7 +81,7 @@ public:
     /**
     * Constructor.
     */
-    FloodFiller(dealii::FESystem<dim> & _fe, dealii::QGaussLobatto<dim> _quadrature): quadrature(_quadrature), num_quad_points(_quadrature.size()), dofs_per_cell(_fe.dofs_per_cell), fe_values(_fe, _quadrature, dealii::update_values){
+    FloodFiller(dealii::FESystem<dim> & _fe, dealii::QGaussLobatto<dim> _quadrature, bool _GrainorOPs): quadrature(_quadrature), num_quad_points(_quadrature.size()), dofs_per_cell(_fe.dofs_per_cell), fe_values(_fe, _quadrature, dealii::update_values), findGrainsOrOPs(_GrainorOPs){
         fe = & _fe;
     };
 
@@ -100,9 +100,20 @@ protected:
 
     /**
     * Function that checks wether a di 'cell' should be considered to be added to the flood fill queue
+    * checkCell returns true if:
+    * The cell's 'ele_val' is in the thresholds AND
+    * di isn't already marked AND
+    * it isn't past the last cell iterator AND
+    * the di is owned by this processor
     */
     template <typename T>
     bool checkCell(T di, T di_end, vectorType* solution_field, double threshold_lower, double threshold_upper);
+
+    /*
+    * Bool that determines if we are searching for Order Parameters or Grain IDs
+    * True for grain IDs and false for Order Parameter searches. 
+    */
+    bool findGrainsOrOPs;
 
     /**
     * The method to merge the grain sets from all the processors.
