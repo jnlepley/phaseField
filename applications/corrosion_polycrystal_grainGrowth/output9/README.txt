@@ -1,0 +1,1 @@
+Alright! so it seems evident that the only grain having difficulty loading in is grain 2. Fantastic. I'll see if Jacob has some insight, since it seems to be getting tripped up on the flood filler part of the code. Maybe I will also send it to David, but I think he's a bit busier recently.

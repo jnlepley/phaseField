@@ -1,0 +1,1 @@
+As I suspected, there is a problem with "Load grain structure." I will change the core library initialConditions.cc so the minimum FeatureID is 1 rather than 0, and seeing if it's possible to load only the grains. 

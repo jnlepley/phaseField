@@ -1,0 +1,1 @@
+I suspect that the segmentation fault error has to do with the "Load grain structure" part of loading in the initial condition. I will try loading only with "Load grain structure" (output3) and only with "Load initial conditions" (output4) to test this.

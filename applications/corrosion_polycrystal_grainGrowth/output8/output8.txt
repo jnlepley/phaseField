@@ -1,0 +1,79 @@
+Using the input parameter file: parameters.prm
+Number of constants: 23
+Number of post-processing variables: 1
+creating problem mesh...
+periodic facepairs: 0
+problem dimensions: 3.2e-05x3.2e-05
+number of elements: 65536
+
+initializing matrix free object
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'psi'
+field 'psi' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n0'
+field 'n0' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n1'
+field 'n1' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n2'
+field 'n2' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n3'
+field 'n3' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n4'
+field 'n4' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n5'
+field 'n5' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu0'
+field 'mu0' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu1'
+field 'mu1' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu2'
+field 'mu2' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu3'
+field 'mu3' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu4'
+field 'mu4' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu5'
+field 'mu5' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mupsi'
+field 'mupsi' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'cM'
+field 'cM' DOF : 66049 (Constraint DOF : 257)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'cP'
+field 'cP' DOF : 66049 (Constraint DOF : 257)
+initializing finite element space P^1 for TIME_INDEPENDENT:SCALAR field 'Phi'
+field 'Phi' DOF : 66049 (Constraint DOF : 257)
+total DOF : 1122833
+initializing parallel::distributed residual and solution vectors
+computed mass matrix (using FE space for field: 0)
+Begin reading vtk file
+Read POINTS: 64516
+  reserve OK
+  done
+Determine Body size
+  Min Coordinate: 0 0 
+  Max Coordinate: 3.2e-05 3.2e-05 
+  done
+Initialize Bin
+  done
+Read CELLS: 16129
+  done
+Bin interpolating functions
+  done  max_bin_size: 16
+begin reading data
+  done
+Construct PField 'FeatureIds'
+  done
+Applying PField initial condition...
+Locating the grains...
+Locating grain 2...
+	Beginning flood filler for grain 2...
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 60094 RUNNING AT 0587446748.wireless.umich.net
+=   EXIT CODE: 11
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Segmentation fault: 11 (signal 11)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

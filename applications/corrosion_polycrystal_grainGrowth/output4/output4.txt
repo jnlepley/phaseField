@@ -1,0 +1,353 @@
+Using the input parameter file: parameters.prm
+Number of constants: 23
+Number of post-processing variables: 1
+creating problem mesh...
+periodic facepairs: 0
+problem dimensions: 3.2e-05x3.2e-05
+number of elements: 65536
+
+initializing matrix free object
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'psi'
+field 'psi' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n0'
+field 'n0' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n1'
+field 'n1' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n2'
+field 'n2' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n3'
+field 'n3' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n4'
+field 'n4' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n5'
+field 'n5' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu0'
+field 'mu0' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu1'
+field 'mu1' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu2'
+field 'mu2' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu3'
+field 'mu3' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu4'
+field 'mu4' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu5'
+field 'mu5' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mupsi'
+field 'mupsi' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'cM'
+field 'cM' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'cP'
+field 'cP' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for TIME_INDEPENDENT:SCALAR field 'Phi'
+field 'Phi' DOF : 66049 (Constraint DOF : 0)
+total DOF : 1122833
+Begin reading vtk file
+Begin reading vtk file
+Begin reading vtk file
+Read POINTS: 36864
+  reserve OK
+Read POINTS: 36864
+  reserve OK
+Read POINTS: 36864
+  reserve OK
+initializing parallel::distributed residual and solution vectors
+computed mass matrix (using FE space for field: 0)
+Begin reading vtk file
+Read POINTS: 36864
+  reserve OK
+  done
+Determine Body size
+  Min Coordinate: 0 0 
+  Max Coordinate: 3.2e-05 3.2e-05 
+  done
+Initialize Bin
+  done
+Determine Body size
+  Min Coordinate: 0 0 
+  Max Coordinate: 3.2e-05 3.2e-05 
+  done
+Initialize Bin
+  done
+  done
+Read CELLS: 16384Read CELLS: 16384
+  done
+Determine Body size
+  Min Coordinate: 0 0 
+  Max Coordinate: 3.2e-05 3.2e-05 
+  done
+Initialize Bin
+
+  done
+Read CELLS: 16384
+  done
+Determine Body size
+  Min Coordinate: 0 0 
+  Max Coordinate: 3.2e-05 3.2e-05 
+  done
+Initialize Bin
+  done
+Read CELLS: 16384
+  done
+Bin interpolating functions
+  done
+Bin interpolating functions
+  done
+Bin interpolating functions
+  done
+Bin interpolating functions
+  done  max_bin_size: 16
+  done  max_bin_size: 16
+  done  max_bin_size: 16
+  done  max_bin_size: 16
+begin reading data
+begin reading data
+begin reading data
+begin reading data
+  done
+Construct PField 'n0'
+  done
+begin reading data
+  done
+Construct PField 'n0'
+  done
+begin reading data
+  done
+Construct PField 'n0'
+  done
+begin reading data
+  done
+Construct PField 'n0'
+  done
+begin reading data
+  done
+Construct PField 'n1'
+  done
+Construct PField 'n1'
+  done
+begin reading data
+  done
+begin reading data
+  done
+Construct PField 'n1'
+  done
+begin reading data
+  done
+Construct PField 'n1'
+  done
+begin reading data
+  done
+Construct PField 'n2'
+  done
+Construct PField 'n2'
+  done
+Construct PField 'n2'
+  done
+begin reading data
+  done
+begin reading data
+  done
+begin reading data
+  done
+Construct PField 'n2'
+  done
+begin reading data
+  done
+Construct PField 'n3'
+  done
+begin reading data
+  done
+Construct PField 'n3'
+  done
+begin reading data
+  done
+Construct PField 'n3'
+  done
+begin reading data
+  done
+Construct PField 'n3'
+  done
+begin reading data
+  done
+Construct PField 'n4'
+  done
+Construct PField 'n4'
+  done
+Construct PField 'n4'
+  done
+Construct PField 'n4'
+  done
+begin reading data
+  done
+begin reading data
+  done
+begin reading data
+  done
+begin reading data
+  done
+Construct PField 'n5'
+  done
+begin reading data
+  done
+Construct PField 'n5'
+  done
+begin reading data
+  done
+Construct PField 'n5'
+  done
+begin reading data
+  done
+Construct PField 'n5'
+  done
+begin reading data
+  done
+Construct PField 'n6'
+  done
+begin reading data
+  done
+Construct PField 'n6'
+  done
+begin reading data
+  done
+Construct PField 'n6'
+  done
+begin reading data
+  done
+Construct PField 'n6'
+  done
+begin reading data
+  done
+Construct PField 'feature_ids'
+  done
+begin reading data
+  done
+Construct PField 'feature_ids'
+  done
+Construct PField 'feature_ids'
+  done
+begin reading data
+  done
+Construct PField 'feature_ids'
+  done
+begin reading data
+  done
+begin reading data
+  done
+Construct PField 'op_ids'
+  done
+Construct PField 'op_ids'
+  done
+Construct PField 'op_ids'
+  done
+Construct PField 'op_ids'
+  done
+  done
+Applying PField initial condition...
+  done
+  done
+Application of initial conditions for field number 0 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 1 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 2 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 3 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 4 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 5 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 6 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 7 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 8 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 9 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 10 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 11 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 12 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 13 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 14 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 15 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 16 complete 
+
+solving...
+
+wall time: 2.292e-06s
+field 'Phi' [nonlinear solve]: current solution: 0.000000e+00, current residual:4.061967e-01
+field 'Phi' [linear solve]: initial residual:4.061967e-01, current residual:9.890564e-07, nsteps:10736, tolerance criterion:1.000000e-06, solution: 3.860522e+00, dU: 3.860522e+00
+Relative difference between nonlinear iterations: 3.86052 0 0
+field 'Phi' [nonlinear solve]: current solution: 3.860522e+00, current residual:1.500607e-01
+field 'Phi' [linear solve]: initial residual:1.471655e-01, current residual:9.860188e-07, nsteps:10712, tolerance criterion:1.000000e-06, solution: 7.665100e+00, dU: 3.805646e+00
+Relative difference between nonlinear iterations: 3.80565 1 0
+field 'Phi' [nonlinear solve]: current solution: 7.665100e+00, current residual:7.499654e-02
+field 'Phi' [linear solve]: initial residual:4.926017e-02, current residual:9.988582e-07, nsteps:10531, tolerance criterion:1.000000e-06, solution: 1.082571e+01, dU: 3.162291e+00
+Relative difference between nonlinear iterations: 3.16229 2 0
+field 'Phi' [nonlinear solve]: current solution: 1.082571e+01, current residual:7.933000e-02
+field 'Phi' [linear solve]: initial residual:1.284315e-02, current residual:9.972420e-07, nsteps:9538, tolerance criterion:1.000000e-06, solution: 1.236397e+01, dU: 1.538639e+00
+Relative difference between nonlinear iterations: 1.53864 3 0
+field 'Phi' [nonlinear solve]: current solution: 1.236397e+01, current residual:8.895193e-02
+field 'Phi' [linear solve]: initial residual:1.607055e-03, current residual:9.944807e-07, nsteps:7623, tolerance criterion:1.000000e-06, solution: 1.261211e+01, dU: 2.481609e-01
+Relative difference between nonlinear iterations: 0.248161 4 0
+field 'Phi' [nonlinear solve]: current solution: 1.261211e+01, current residual:9.068530e-02
+field 'Phi' [linear solve]: initial residual:3.278878e-05, current residual:9.996978e-07, nsteps:1733, tolerance criterion:1.000000e-06, solution: 1.261413e+01, dU: 3.098434e-03
+Relative difference between nonlinear iterations: 0.00309843 5 0
+field 'Phi' [nonlinear solve]: current solution: 1.261413e+01, current residual:9.072242e-02
+field 'Phi' [linear solve]: initial residual:9.997954e-07, current residual:9.997954e-07, nsteps:0, tolerance criterion:1.000000e-06, solution: 1.261413e+01, dU: 0.000000e+00
+Relative difference between nonlinear iterations: 0 6 0
+wall time: 4393.2s
+Output written to:solution-0.vtu
+
+
+Time stepping parameters: timeStep: 2e-06  timeFinal: 2e-06  timeIncrements: 1
+
+time increment:1  time: 2e-06
+field 'psi' [explicit solve]: current solution: 1.790453e+02, current residual:2.781010e-12
+field 'n0' [explicit solve]: current solution: 2.569763e-01, current residual:3.991818e-15
+field 'n1' [explicit solve]: current solution: 2.569763e-01, current residual:3.991818e-15
+field 'n2' [explicit solve]: current solution: 2.569763e-01, current residual:3.991818e-15
+field 'n3' [explicit solve]: current solution: 2.569763e-01, current residual:3.991818e-15
+field 'n4' [explicit solve]: current solution: 2.569763e-01, current residual:3.991818e-15
+field 'n5' [explicit solve]: current solution: 2.569763e-01, current residual:3.991818e-15
+field 'mu0' [explicit solve]: current solution: 3.980907e-01, current residual:6.183101e-15
+field 'mu1' [explicit solve]: current solution: 3.980907e-01, current residual:6.183101e-15
+field 'mu2' [explicit solve]: current solution: 3.980907e-01, current residual:6.183101e-15
+field 'mu3' [explicit solve]: current solution: 3.980907e-01, current residual:6.183101e-15
+field 'mu4' [explicit solve]: current solution: 3.980907e-01, current residual:6.183101e-15
+field 'mu5' [explicit solve]: current solution: 3.980907e-01, current residual:6.183101e-15
+field 'mupsi' [explicit solve]: current solution: 1.389929e+01, current residual:2.165479e-13
+field 'cM' [explicit solve]: current solution: 1.268929e+02, current residual:1.976855e-12
+field 'cP' [explicit solve]: current solution: 2.569752e+05, current residual:3.991823e-09
+field 'Phi' [nonlinear solve]: current solution: 1.261413e+01, current residual:9.072395e-02
+field 'Phi' [linear solve]: initial residual:5.280519e-04, current residual:9.963713e-07, nsteps:6962, tolerance criterion:1.000000e-06, solution: 1.249690e+01, dU: 1.360420e-01
+Relative difference between nonlinear iterations: 0.136042 0 1
+field 'Phi' [nonlinear solve]: current solution: 1.249690e+01, current residual:9.068190e-02
+field 'Phi' [linear solve]: initial residual:9.963751e-07, current residual:9.963751e-07, nsteps:0, tolerance criterion:1.000000e-06, solution: 1.249690e+01, dU: 0.000000e+00
+Relative difference between nonlinear iterations: 0 1 1
+wall time: 101.974s
+Output written to:solution-1.vtu
+
+
+
++-------------------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start              |   4.5e+03s |            |
+|                                                       |            |            |
+| Section                                   | no. calls |  wall time | % of total |
++-------------------------------------------+-----------+------------+------------+
+| matrixFreePDE: computeLHS                 |     57835 |  4.38e+03s |        97% |
+| matrixFreePDE: computeRHS                 |        10 |     0.164s |         0% |
+| matrixFreePDE: initialization             |         1 |     0.787s |         0% |
+| matrixFreePDE: output                     |         2 |     0.696s |         0% |
+| matrixFreePDE: setNonlinearEqInitialGuess |         1 |  6.08e-06s |         0% |
+| matrixFreePDE: solve                      |         1 |   4.5e+03s |     1e+02% |
+| matrixFreePDE: solveIncrements            |         2 |   4.5e+03s |     1e+02% |
++-------------------------------------------+-----------+------------+------------+
+

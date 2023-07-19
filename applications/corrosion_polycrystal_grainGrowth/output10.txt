@@ -1,0 +1,197 @@
+Using the input parameter file: parameters.prm
+Number of constants: 23
+Number of post-processing variables: 1
+creating problem mesh...
+periodic facepairs: 0
+problem dimensions: 3.2e-05x3.2e-05
+number of elements: 65536
+
+initializing matrix free object
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'psi'
+field 'psi' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n0'
+field 'n0' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n1'
+field 'n1' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n2'
+field 'n2' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n3'
+field 'n3' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n4'
+field 'n4' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'n5'
+field 'n5' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu0'
+field 'mu0' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu1'
+field 'mu1' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu2'
+field 'mu2' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu3'
+field 'mu3' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu4'
+field 'mu4' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mu5'
+field 'mu5' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'mupsi'
+field 'mupsi' DOF : 66049 (Constraint DOF : 0)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'cM'
+field 'cM' DOF : 66049 (Constraint DOF : 257)
+initializing finite element space P^1 for EXPLICIT_TIME_DEPENDENT:SCALAR field 'cP'
+field 'cP' DOF : 66049 (Constraint DOF : 257)
+initializing finite element space P^1 for TIME_INDEPENDENT:SCALAR field 'Phi'
+field 'Phi' DOF : 66049 (Constraint DOF : 257)
+total DOF : 1122833
+initializing parallel::distributed residual and solution vectors
+computed mass matrix (using FE space for field: 0)
+Begin reading vtk file
+Read POINTS: 64516
+  reserve OK
+  done
+Determine Body size
+  Min Coordinate: 0 0 
+  Max Coordinate: 3.2e-05 3.2e-05 
+  done
+Initialize Bin
+  done
+Read CELLS: 16129
+  done
+Bin interpolating functions
+  done  max_bin_size: 16
+begin reading data
+  done
+Construct PField 'FeatureIds'
+  done
+Applying PField initial condition...
+Locating the grains...
+Locating grain 1...
+	Beginning flood filler for grain 1...
+	Flood filler done for grain 1!
+	Grain indices done for grain 1!
+	Grain set insertion done for grain 1!
+Grain 1 has been located!
+
+Locating grain 2...
+	Skipping grain 2
+Locating grain 3...
+	Beginning flood filler for grain 3...
+	Flood filler done for grain 3!
+	Grain indices done for grain 3!
+	Grain set insertion done for grain 3!
+Grain 3 has been located!
+
+Locating grain 4...
+	Beginning flood filler for grain 4...
+	Flood filler done for grain 4!
+	Grain indices done for grain 4!
+	Grain set insertion done for grain 4!
+Grain 4 has been located!
+
+Locating grain 5...
+	Beginning flood filler for grain 5...
+	Flood filler done for grain 5!
+	Grain indices done for grain 5!
+	Grain set insertion done for grain 5!
+Grain 5 has been located!
+
+Locating grain 6...
+	Beginning flood filler for grain 6...
+	Flood filler done for grain 6!
+	Grain indices done for grain 6!
+	Grain set insertion done for grain 6!
+Grain 6 has been located!
+
+Generating simplified representations of the grains...
+Grain: 1 0 Center: 4.28414e-06 1.24446e-05  Radius: 6.24281e-06
+Grain: 1 0 Center: 9.5625e-06 1.59375e-05  Radius: 8.83883e-08
+Grain: 3 0 Center: 1.29606e-05 5.37878e-06  Radius: 8.01459e-06
+Grain: 3 0 Center: 1.91875e-05 5.3125e-06  Radius: 8.83883e-08
+Grain: 3 0 Center: 2.53125e-05 1.08125e-05  Radius: 8.83883e-08
+Grain: 3 0 Center: 2.65625e-05 1.03125e-05  Radius: 8.83883e-08
+Grain: 4 0 Center: 4.28246e-06 3.66789e-06  Radius: 6.79292e-06
+Grain: 4 0 Center: 2.46875e-05 1.08125e-05  Radius: 8.83883e-08
+Grain: 5 0 Center: 1.49375e-05 9.4375e-06  Radius: 8.83883e-08
+Grain: 5 0 Center: 1.24375e-05 1.16875e-05  Radius: 8.83883e-08
+Grain: 5 0 Center: 1.14375e-05 1.24375e-05  Radius: 8.83883e-08
+Grain: 5 0 Center: 2.82623e-05 1.33026e-05  Radius: 5.1941e-06
+Grain: 6 0 Center: 1.78984e-05 1.21754e-05  Radius: 8.60887e-06
+Reassigning the grains to new order parameters...
+After reassignment: 
+Placing the grains in their new order parameters...
+Applying non-PField initial condition...
+Application of initial conditions for field number 0 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 7 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 8 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 9 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 10 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 11 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 12 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 13 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 14 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 15 complete 
+Applying non-PField initial condition...
+Application of initial conditions for field number 16 complete 
+
+solving...
+
+Reassigning grains...
+Reassigning grains completed.
+
+wall time: 1.916e-06s
+field 'Phi' [nonlinear solve]: current solution: 0.000000e+00, current residual:0.000000e+00
+field 'Phi' [linear solve]: initial residual:0.000000e+00, current residual:0.000000e+00, nsteps:0, tolerance criterion:1.000000e-06, solution: 0.000000e+00, dU: 0.000000e+00
+Relative difference between nonlinear iterations: 0 0 0
+wall time: 0.0150594s
+Output written to:solution-0.vtu
+
+
+Time stepping parameters: timeStep: 2e-06  timeFinal: 2e-06  timeIncrements: 1
+
+time increment:1  time: 2e-06
+field 'psi' [explicit solve]: current solution: 2.570000e-01, current residual:3.992188e-15
+field 'n0' [explicit solve]: current solution: 2.570000e-01, current residual:3.992188e-15
+field 'n1' [explicit solve]: current solution: 2.570000e-01, current residual:3.992188e-15
+field 'n2' [explicit solve]: current solution: 2.570000e-01, current residual:3.992188e-15
+field 'n3' [explicit solve]: current solution: 2.570000e-01, current residual:3.992188e-15
+field 'n4' [explicit solve]: current solution: 2.570000e-01, current residual:3.992188e-15
+field 'n5' [explicit solve]: current solution: 2.570000e-01, current residual:3.992188e-15
+field 'mu0' [explicit solve]: current solution: 2.569951e-01, current residual:3.992112e-15
+field 'mu1' [explicit solve]: current solution: 2.569951e-01, current residual:3.992112e-15
+field 'mu2' [explicit solve]: current solution: 2.569951e-01, current residual:3.992112e-15
+field 'mu3' [explicit solve]: current solution: 2.569951e-01, current residual:3.992112e-15
+field 'mu4' [explicit solve]: current solution: 2.569951e-01, current residual:3.992112e-15
+field 'mu5' [explicit solve]: current solution: 2.569951e-01, current residual:3.992112e-15
+field 'mupsi' [explicit solve]: current solution: 2.569951e-01, current residual:3.992112e-15
+field 'cM' [explicit solve]: current solution: 0.000000e+00, current residual:0.000000e+00
+field 'cP' [explicit solve]: current solution: 2.570000e+05, current residual:3.992188e-09
+field 'Phi' [nonlinear solve]: current solution: 0.000000e+00, current residual:1.735721e-19
+field 'Phi' [linear solve]: initial residual:1.227340e-19, current residual:1.227340e-19, nsteps:0, tolerance criterion:1.000000e-06, solution: 0.000000e+00, dU: 0.000000e+00
+Relative difference between nonlinear iterations: 0 0 1
+wall time: 0.0497604s
+Output written to:solution-1.vtu
+
+
+
++-------------------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start              |      4.56s |            |
+|                                                       |            |            |
+| Section                                   | no. calls |  wall time | % of total |
++-------------------------------------------+-----------+------------+------------+
+| matrixFreePDE: computeRHS                 |         3 |      0.06s |       1.3% |
+| matrixFreePDE: initialization             |         1 |      2.57s |        56% |
+| matrixFreePDE: output                     |         2 |     0.904s |        20% |
+| matrixFreePDE: reassignGrains             |         1 |     0.995s |        22% |
+| matrixFreePDE: setNonlinearEqInitialGuess |         1 |  6.17e-06s |         0% |
+| matrixFreePDE: solve                      |         1 |      1.99s |        44% |
+| matrixFreePDE: solveIncrements            |         2 |    0.0648s |       1.4% |
++-------------------------------------------+-----------+------------+------------+
+
