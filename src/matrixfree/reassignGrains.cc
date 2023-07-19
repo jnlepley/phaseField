@@ -29,6 +29,8 @@ void MatrixFreePDE<dim,degree>::reassignGrains () {
 
     std::vector<GrainSet<dim>> grain_sets;
 
+    std::cout  << "  " << fields.size() << std::endl;
+
     unsigned int op_list_index = 0;
     for(unsigned int fieldIndex=0; fieldIndex<fields.size(); fieldIndex++){
         if (op_list_index < userInputs.variables_for_remapping.size()){

@@ -67,11 +67,7 @@ void FloodFiller<dim, degree>::calcGrainSets(dealii::FESystem<dim> & fe, dealii:
                 new_grain_set.setOrderParameterIndex(order_parameter_index);
                 grain_sets.push_back(new_grain_set);
             }
-        } else if (di->has_children()) {
-            
-            std::cout << di->n_children() << " children detected.\n";
-
-        }
+        } 
 
         ++di;
         ++numberOfCellsIterared;
@@ -221,7 +217,7 @@ template <int dim, int degree>
 void FloodFiller<dim, degree>::createGlobalGrainSetList (std::vector<GrainSet<dim>> & grain_sets) const
 {
     int numProcs=dealii::Utilities::MPI::n_mpi_processes(MPI_COMM_WORLD);
-	int thisProc=dealii::Utilities::MPI::this_mpi_process(MPI_COMM_WORLD);
+	//int thisProc=dealii::Utilities::MPI::this_mpi_process(MPI_COMM_WORLD);
 
     unsigned int num_grains_local = grain_sets.size();
 
