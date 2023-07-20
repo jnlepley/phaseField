@@ -85,12 +85,26 @@ void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* so
                     fe_values.get_function_values(*solution_field, var_values);
 
 
-                    double ele_val = 0.0;
+                    // A loop that gives the most common feature ID on all quadrature points
+                    // Values on quadrature points is stored in var_values[q_point]
+                    // the double is the key type, the vals stored on quadreature points
+                    // the int is the value type, and tells how many times the associated double has been seen
+                    // Note, indexing into maps is like this:  map[key] ---> returns associated value, and is modifiable
+                    std::map<double, int> quadratureValues;
+
+                    // Variables for keeping track of the most common value seen at all quadrature points
+                    // and for keeping track *how many times* that most common value *has* been seen
+                    int maxNumberSeen = 0;
+                    double mostCommonQPointValue = -1;
                     for (unsigned int q_point=0; q_point<num_quad_points; ++q_point){
-                        for (unsigned int i=0; i<dofs_per_cell; ++i){
-                            ele_val += fe_values.shape_value (i, q_point)*var_values[q_point]*quadrature.weight(q_point);
+                        // Add the number of times that var_values[q_point] has been seen
+                        ++quadratureValues[var_values[q_point]];
+                        if (quadratureValues[var_values[q_point]] > maxNumberSeen) {
+                            maxNumberSeen = quadratureValues[var_values[q_point]];
+                            mostCommonQPointValue = var_values[q_point];
                         }
                     }
+                    ele_val = mostCommonQPointValue;
 
                     if (ele_val > threshold_lower && ele_val < threshold_upper){
                         grain_assigned = true;
