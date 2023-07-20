@@ -82,8 +82,8 @@ public:
     /**
     * Constructor.
     */
-    FloodFiller(dealii::FESystem<dim> & _fe, dealii::QGaussLobatto<dim> _quadrature, bool _GrainorOPs, dealii::ConditionalOStream _pcout, int _level)
-                : quadrature(_quadrature), num_quad_points(_quadrature.size()), dofs_per_cell(_fe.dofs_per_cell), fe_values(_fe, _quadrature, dealii::update_values), findGrainsOrOPs(_GrainorOPs), pcout(_pcout), level(_level){
+    FloodFiller(dealii::FESystem<dim> & _fe, dealii::QGaussLobatto<dim> _quadrature, dealii::ConditionalOStream _pcout, int _level)
+                : quadrature(_quadrature), num_quad_points(_quadrature.size()), dofs_per_cell(_fe.dofs_per_cell), fe_values(_fe, _quadrature, dealii::update_values), pcout(_pcout), level(_level){
         fe = & _fe;
     };
 
@@ -110,12 +110,6 @@ protected:
     */
     template <typename T>
     bool checkCell(T di, T di_end, vectorType* solution_field, double threshold_lower, double threshold_upper);
-
-    /*
-    * Bool that determines if we are searching for Order Parameters or Grain IDs
-    * True for grain IDs and false for Order Parameter searches. 
-    */
-    bool findGrainsOrOPs;
 
     dealii::ConditionalOStream pcout;
 

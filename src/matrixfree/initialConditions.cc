@@ -100,7 +100,7 @@ void MatrixFreePDE<dim,degree>::applyInitialConditions(){
         // to?
         //////////////////////////
 
-        FloodFiller<dim, degree> flood_filler(*FESet.at(scalar_field_index), quadrature2, true, pcout, userInputs.refine_factor);
+        FloodFiller<dim, degree> flood_filler(*FESet.at(scalar_field_index), quadrature2, pcout, userInputs.refine_factor);
 
         pcout << "Locating the grains...\n";
 
