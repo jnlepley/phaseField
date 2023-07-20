@@ -76,14 +76,20 @@ void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* so
                 if (di->is_locally_owned()){
                     di->set_user_flag();
 
-                    dealii::FEValues<dim> fe_values (*fe, quadrature, dealii::update_values);
+                    // A vector that contains the values (of feature IDs)
+                    // of every quadrature point. Unsure how they are structured.
                     std::vector<double> var_values(num_quad_points);
-                    std::vector<dealii::Point<dim> > q_point_list(num_quad_points);
 
                     // Get the average value for the element
+                    // I don't know exacly what reinit does, but I know it is necisary for 
+                    // geting the values at out 'di'
                     fe_values.reinit(di);
+                    // Return the values of a finite element function restricted to the current cell
+                    // that was last selected by the reinit function
+                    // solution_field is A vector of values that describes (globally) the finite element function 
+                    // that this function should evaluate at the quadrature points of the current cell. 
+                    // var_values[q] will contain the value of the field described by fe_function at the qth quadrature point.
                     fe_values.get_function_values(*solution_field, var_values);
-
 
                     // A loop that gives the most common feature ID on all quadrature points
                     // Values on quadrature points is stored in var_values[q_point]
@@ -104,7 +110,7 @@ void FloodFiller<dim, degree>::recursiveFloodFill(T di, T di_end, vectorType* so
                             mostCommonQPointValue = var_values[q_point];
                         }
                     }
-                    ele_val = mostCommonQPointValue;
+                    double ele_val = mostCommonQPointValue;
 
                     if (ele_val > threshold_lower && ele_val < threshold_upper){
                         grain_assigned = true;
