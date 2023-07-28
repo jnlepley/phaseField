@@ -24,8 +24,9 @@ void MatrixFreePDE<dim,degree>::reassignGrains () {
     }
 
     int level = userInputs.max_refinement_level;
-    // If no max_refinement_level is defined.
-    if ( level == -1 ) {
+    // If mesh adaptivity is disabled...
+    if (!userInputs.h_adaptivity) {
+        // ... the level used for flood fill should be refine_factor
         level = userInputs.refine_factor;
     }
 
