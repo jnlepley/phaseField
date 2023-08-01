@@ -81,6 +81,7 @@ DoxygenWarningLog.txt
 *.DS_Store
 freeEnergy.txt
 output.txt
+out_*.txt
 
 restart*
 integratedFields.txt

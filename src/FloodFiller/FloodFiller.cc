@@ -31,7 +31,7 @@ void FloodFiller<dim, degree>::calcGrainSets(dealii::FESystem<dim> & fe, dealii:
     //////////////////////////
     // I feel like the below while loop is making many unnecisary calculations
     // Idealy, I'd call recusiveFloodFill once per grain, and not once per 'di'
-    // active_cell_iterator. If there are 8 grains in the scene and ~10,000 di's per grain, 
+    // cell_iterator. If there are 8 grains in the scene and ~10,000 di's per grain, 
     // well, the computation will be unnecisarily slow
     //////////////////////////
     // The flood fill loop
